@@ -12,5 +12,3 @@ The below shows the homepage.
 
 [Polygon.IO](https://polygon.io/)
 [Polygon.IO Docs](https://polygon.io/docs)
-
-
