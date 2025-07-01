@@ -1,17 +1,13 @@
 import OptionsForm from "@/components/OptionsForm";
 import Header from "@/components/Header";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import OptionsChart from "./components/OptionsChart";
 import { fetchOptionsData } from "@/lib/api";
 import { useState } from "react";
 import type { ChartData, FormData } from "./lib/types";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./components/ui/alert";
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);

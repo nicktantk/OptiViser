@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ChartContainer } from "@/components/ui/chart";
+
+
 import { format } from "date-fns";
 import {
   Area,
@@ -22,6 +16,8 @@ import {
   YAxis,
 } from "recharts";
 import type { ChartData, FormData } from "../lib/types";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { ChartContainer } from "./ui/chart";
 
 type OptionsChartsProps = {
   optionsData: ChartData;
