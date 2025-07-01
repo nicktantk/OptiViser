@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import { format } from "date-fns";
 import {
   Area,
@@ -16,7 +14,13 @@ import {
   YAxis,
 } from "recharts";
 import type { ChartData, FormData } from "../lib/types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { ChartContainer } from "./ui/chart";
 
 type OptionsChartsProps = {
@@ -88,10 +92,6 @@ export default function OptionsCharts({
                 label: "Price",
                 color: "hsl(var(--chart-1))",
               },
-              volume: {
-                label: "Volume",
-                color: "hsl(var(--chart-2))",
-              },
             }}
             className="h-[400px]"
           >
@@ -107,33 +107,23 @@ export default function OptionsCharts({
                   tick={{ fontSize: 12 }}
                 />
                 <YAxis
-                  yAxisId="left"
                   domain={["dataMin", "dataMax"]}
                   tickFormatter={formatPrice}
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  yAxisId="right"
-                  orientation="right"
-                  dataKey="volume"
-                  tickFormatter={formatVolume}
                   tick={{ fontSize: 12 }}
                 />
                 <Tooltip content={<CustomCandlestickTooltip />} />
                 <Legend />
                 <Bar
-                  dataKey="volume"
-                  yAxisId="right"
-                  fill="var(--color-volume)"
+                  dataKey="close"
+                  fill="var(--color-price)"
                   opacity={0.3}
-                  name="Volume"
+                  name="Closing Price"
                 />
                 <Line
                   type="monotone"
                   dataKey="close"
                   stroke="var(--color-price)"
-                  yAxisId="left"
-                  name="Price"
+                  name="Closing Price"
                   dot={false}
                 />
               </ComposedChart>
