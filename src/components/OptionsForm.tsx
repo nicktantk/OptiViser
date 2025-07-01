@@ -15,12 +15,12 @@ import { Input } from "./ui/input";
 import { formSchema } from "@/lib/types";
 import { Button } from "./ui/button";
 
-type TOptionsForm = {
+type OptionsFormProps = {
   onSubmit: (values: z.infer<typeof formSchema>) => void;
   isLoading: boolean;
 };
 
-export default function OptionsForm({ onSubmit, isLoading }: TOptionsForm) {
+export default function OptionsForm({ onSubmit, isLoading }: OptionsFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });

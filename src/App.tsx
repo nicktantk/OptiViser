@@ -31,21 +31,16 @@ export default function Home() {
         setError(
           "No data found for the selected option. There might be no volume for this strike price."
         );
-        setOptionsData(null);
-        setUnderlyingData(null);
-        setFormData(null);
       } else {
         setOptionsData(result.optionsData);
         setUnderlyingData(result.underlyingData);
         setFormData(data);
+        console.log(JSON.stringify(result));
       }
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Failed to fetch options data"
       );
-      setOptionsData(null);
-      setUnderlyingData(null);
-      setFormData(null);
     } finally {
       setIsLoading(false);
     }
