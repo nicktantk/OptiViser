@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   ComposedChart,
   Legend,
-  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -92,6 +91,10 @@ export default function OptionsCharts({
                 label: "Price",
                 color: "hsl(var(--chart-1))",
               },
+              volume: {
+                label: "Volume",
+                color: "hsl(var(--chart-2))",
+              },
             }}
             className="h-[400px]"
           >
@@ -106,25 +109,40 @@ export default function OptionsCharts({
                   tickFormatter={formatDate}
                   tick={{ fontSize: 12 }}
                 />
+                {/* Price Y-axis (left) */}
                 <YAxis
+                  yAxisId="left"
                   domain={["dataMin", "dataMax"]}
                   tickFormatter={formatPrice}
                   tick={{ fontSize: 12 }}
                 />
+                {/* Volume Y-axis (right) */}
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  dataKey="volume"
+                  tickFormatter={formatVolume}
+                  tick={{ fontSize: 12 }}
+                />
                 <Tooltip content={<CustomCandlestickTooltip />} />
                 <Legend />
+                {/* Closing price as bars */}
                 <Bar
                   dataKey="close"
                   fill="var(--color-price)"
                   opacity={0.3}
                   name="Closing Price"
+                  yAxisId="left"
                 />
-                <Line
+                {/* Volume as area */}
+                <Area
                   type="monotone"
-                  dataKey="close"
-                  stroke="var(--color-price)"
-                  name="Closing Price"
-                  dot={false}
+                  dataKey="volume"
+                  stroke="var(--color-volume)"
+                  fill="var(--color-volume)"
+                  fillOpacity={0.1}
+                  yAxisId="left"
+                  name="Price"
                 />
               </ComposedChart>
             </ResponsiveContainer>
@@ -180,20 +198,20 @@ export default function OptionsCharts({
                 <Tooltip content={<CustomCandlestickTooltip />} />
                 <Legend />
                 <Bar
-                  dataKey="volume"
-                  yAxisId="right"
-                  fill="var(--color-volume)"
-                  opacity={0.3}
-                  name="Volume"
+                  dataKey="close"
+                  yAxisId="left"
+                  fill="var(--color-price)"
+                  opacity={0.1}
+                  name="Price"
                 />
                 <Area
                   type="monotone"
-                  dataKey="close"
-                  stroke="var(--color-price)"
-                  fill="var(--color-price)"
+                  dataKey="volume"
+                  stroke="var(--color-volume)"
+                  fill="var(--color-volume)"
                   fillOpacity={0.1}
                   yAxisId="left"
-                  name="Price"
+                  name="Volume"
                 />
               </ComposedChart>
             </ResponsiveContainer>
